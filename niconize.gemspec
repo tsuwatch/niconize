@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["neoen.gsn@gmail.com"]
   spec.description   = %q{wrapper of mechanize for nicovideo}
   spec.summary       = spec.description
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/tsuwatch/niconize"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
