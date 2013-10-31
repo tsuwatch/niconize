@@ -10,7 +10,3 @@ Wrapper of mechanize for [http://www.nicovideo.jp](http://www.nicovideo.jp)
 ## Installation
 
     $ gem install niconize
-
-## Usage
-
-    $ Niconize = 
