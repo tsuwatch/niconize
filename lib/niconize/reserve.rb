@@ -11,6 +11,7 @@ class Niconize
     login unless @logined
     response = @agent.get("http://live.nicovideo.jp/watch/#{lv}")
 
+    raise TimeshiftError, 'This nicolive is already reserved' if response.search('a.watching_reservation_reserved')
     response.search('a.watching_reservation')[0]['onclick']
   end
 
@@ -24,7 +25,7 @@ class Niconize
       'token' => token
     }
     response = @agent.get(URL[:reserve], query)
-    raise UlckParseError, 'It is the limit of the number of your reservation' unless response.at('div.reserve')
+    raise TimeshiftError, 'It is the limit of the number of your reservation' unless response.at('div.reserve')
     response.at('div.reserve').inner_html.scan(/ulck_[0-9]+/)[0]
   end
 
@@ -42,5 +43,5 @@ class Niconize
     response = @agent.post(URL[:reserve], data)
   end
 
-  class UlckParseError < StandardError; end
+  class TimeshiftError < StandardError; end
 end
