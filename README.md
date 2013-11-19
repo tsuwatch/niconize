@@ -10,3 +10,13 @@ Wrapper of mechanize for [http://www.nicovideo.jp](http://www.nicovideo.jp)
 ## Installation
 
     $ gem install niconize
+
+## Usage
+```ruby
+require 'niconize'
+
+niconize = Niconize.new('YOUR_MAIL_ADDRESS', 'PASSWORD')
+
+# timeshift reservation
+niconize.reserve('lvxxxxxx')
+```
