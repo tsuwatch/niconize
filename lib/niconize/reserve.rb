@@ -11,7 +11,7 @@ class Niconize
     login unless @logined
     response = @agent.get("http://live.nicovideo.jp/watch/#{lv}")
 
-    raise TimeshiftError, 'This nicolive is already reserved' if response.search('a.watching_reservation_reserved')
+    raise TimeshiftError, 'This nicolive is already reserved' if response.search('a.watching_reservation_reserved')[0]
     response.search('a.watching_reservation')[0]['onclick']
   end
 
