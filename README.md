@@ -6,6 +6,7 @@ Wrapper of mechanize for [http://www.nicovideo.jp](http://www.nicovideo.jp)
 
 - Login to nicovideo
 - Timeshift reserve a niconico live
+...and more
 
 ## Installation
 
