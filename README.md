@@ -19,5 +19,5 @@ require 'niconize'
 niconize = Niconize.new('YOUR_MAIL_ADDRESS', 'PASSWORD')
 
 # timeshift reservation
-niconize.live('lvxxxxxx').reserve
+niconize.program('lvxxxxxx').reserve
 ```
