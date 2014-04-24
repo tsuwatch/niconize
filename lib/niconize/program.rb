@@ -1,3 +1,5 @@
+require_relative './live'
+
 class Niconize
   def program(lv)
     login unless @logined
@@ -30,10 +32,7 @@ class Niconize
     private
 
     def reserved?
-      query = { 'mode' => 'list' }
-      response = @agent.get(URL[:reserve], query)
-      vid_list = response.search('timeshift_reserved_list').children.map { |vid_element| vid_element.inner_text }
-      !!vid_list.include?(vid)
+      !!@parent.live.reserved_programs.map { |program| program.vid }.include?(vid)
     end
 
     def live_page

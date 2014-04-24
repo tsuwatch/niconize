@@ -33,3 +33,4 @@ class Niconize
 end
 
 require_relative 'niconize/program'
+require_relative 'niconize/live'
