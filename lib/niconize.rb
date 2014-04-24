@@ -32,4 +32,4 @@ class Niconize
   class LoginError < StandardError; end
 end
 
-require_relative 'niconize/live'
+require_relative 'niconize/program'

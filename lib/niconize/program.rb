@@ -1,25 +1,25 @@
 class Niconize
-  def live(lv)
+  def program(lv)
     login unless @logined
-    Live.new(self, lv)
+    Program.new(self, lv)
   end
 
-  class Live
-    attr_reader :lv
+  class Program
+    attr_reader :lv, :vid
 
     def initialize(parent, lv)
       @parent = parent
       @agent = parent.agent
       @lv = lv
+      @vid = lv.sub(/^lv/, '')
     end
 
     def reserve
       raise TimeshiftError, 'This nicolive is already reserved' if reserved?
-      lv_num = lv.sub(/^lv/, '')
 
       data = {
         'mode' => 'regist',
-        'vid' => lv_num,
+        'vid' => vid,
         'token' => ulck,
         '_' => ''
       }
@@ -30,11 +30,10 @@ class Niconize
     private
 
     def reserved?
-      lv_num = lv.sub(/^lv/, '')
       query = { 'mode' => 'list' }
       response = @agent.get(URL[:reserve], query)
-      vid_list = response.search('timeshift_reserved_list').children.map { |vid| vid.inner_text }
-      !!vid_list.include?(lv_num)
+      vid_list = response.search('timeshift_reserved_list').children.map { |vid_element| vid_element.inner_text }
+      !!vid_list.include?(vid)
     end
 
     def live_page
@@ -46,11 +45,9 @@ class Niconize
     end
 
     def ulck
-      lv_num = lv.sub(/^lv/, '')
-
       query = {
         'mode' => 'watch_num',
-        'vid' => lv_num,
+        'vid' => vid,
         'token' => token
       }
       response = @agent.get(URL[:reserve], query)
