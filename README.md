@@ -16,8 +16,8 @@ Wrapper of mechanize for [http://www.nicovideo.jp](http://www.nicovideo.jp)
 ```ruby
 require 'niconize'
 
-niconize = Niconize.new('YOUR_MAIL_ADDRESS', 'PASSWORD')
+client = Niconize::Client.new('YOUR_MAIL_ADDRESS', 'PASSWORD')
 
 # timeshift reservation
-niconize.program('lvxxxxxx').reserve
+client.program('lvxxxxxx').reserve
 ```
