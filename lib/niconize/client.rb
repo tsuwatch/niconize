@@ -17,7 +17,7 @@ module Niconize
       @logined = false
 
       @agent = Mechanize.new
-      @agent.ssl_version = 'SSLv3'
+      @agent.ssl_version = 'TLSv1'
       @agent.request_headers = {
         'accept-language' => 'ja, ja-JP'
       }
